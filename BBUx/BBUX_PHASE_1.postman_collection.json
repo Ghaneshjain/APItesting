@@ -1,0 +1,5262 @@
+{
+	"info": {
+		"_postman_id": "69ce77a8-306f-bd46-754a-28775e4c0565",
+		"name": "BBUX_PHASE_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sprint1",
+			"item": [
+				{
+					"name": "Positive Test Cases",
+					"item": [
+						{
+							"name": "Login API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonResponse = JSON.parse(responseBody);",
+											"var token = jsonResponse.jwt_access_token;",
+											"var logout = jsonResponse.logout_token;",
+											"",
+											"//below code will set the dynamically generated access token in the envrionment variable",
+											"postman.setEnvironmentVariable(\"access_token\", token);",
+											"postman.setEnvironmentVariable(\"logout_token\", logout);",
+											"",
+											"",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.current_user.uid).to.eql(\"88704\");",
+											"    pm.expect(jsonData.current_user.name).to.eql(\"ghanesh\");",
+											"    //below code is to assert the response code of api",
+											"});",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    ",
+											"});",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"ghanesh\", \n\t\"pass\":\"1234\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}user/login?_format=json",
+									"host": [
+										"{{url}}user"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product Category",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//var jsonResponse = JSON.parse(responseBody);",
+											"",
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});",
+											"",
+											"//  pm.test(\"Category name\", function () {",
+											"//     var jsonData = pm.response.json();",
+											"//     pm.expect(jsonData.current_user.tid).to.eql(\"258\");",
+											"//     pm.expect(jsonData.current_user.name).to.eql(\"Skincare\");",
+											"    ",
+											"// });",
+											"",
+											"pm.test(\"Category name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].tid).to.eql(\"258\");",
+											"    pm.expect(jsonData[0].name).to.eql(\"Skincare\");",
+											"    pm.expect(jsonData[1].tid).to.eql(\"259\");",
+											"    pm.expect(jsonData[1].name).to.eql(\"Face\");",
+											"    pm.expect(jsonData[2].tid).to.eql(\"19798\");",
+											"    pm.expect(jsonData[2].name).to.eql(\"Cheek\");",
+											"    pm.expect(jsonData[3].tid).to.eql(\"253\");",
+											"    pm.expect(jsonData[3].name).to.eql(\"Lip\");",
+											"    pm.expect(jsonData[4].tid).to.eql(\"255\");",
+											"    pm.expect(jsonData[4].name).to.eql(\"Eye\");",
+											"    pm.expect(jsonData[5].tid).to.eql(\"85799\");",
+											"    pm.expect(jsonData[5].name).to.eql(\"More\");",
+											"    pm.expect(jsonData[6].tid).to.eql(\"85800\");",
+											"    pm.expect(jsonData[6].name).to.eql(\"Bestsellers\");",
+											"    ",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/productCategories?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"productCategories"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product Detail",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/productDetails?_format=json&nid=86405",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"productDetails"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "nid",
+											"value": "86405"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/productListings?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"productListings"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "tid",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "{page}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product Featured",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/browseProducts?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"browseProducts"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "StoriesListing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/storiesListing?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"storiesListing"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "limit",
+											"value": "{limit}",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "{page}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "storiesDetails",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/storiesDetails?_format=json&nid=86526",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"storiesDetails"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "nid",
+											"value": "86526"
+										},
+										{
+											"key": "nid",
+											"value": "86075",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "VideoCategory",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/videoCategory?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"videoCategory"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "videoListings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/videoListings?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"videoListings"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "videoDetails",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/videoDetails?_format=json&nid=86521",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"videoDetails"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "nid",
+											"value": "86521"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Negative Test Cases",
+					"item": [
+						{
+							"name": "Product Category",
+							"item": [
+								{
+									"name": "wrong token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"pm.test(\"Status code is 401 and message is Unauthorized\", function () {",
+													"    pm.response.to.have.status(401);",
+													"    pm.response.to.have.status(\"Unauthorized\");",
+													"});",
+													"",
+													"    pm.test(\"Your test name\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.message).to.eql(\"User is not authenticated\");",
+													"});"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 23456789"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/productCategories?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"productCategories"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/productCategies?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"productCategies"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with blank parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/productCategories?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"productCategories"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Product Detail",
+							"item": [
+								{
+									"name": "Test with Wrong Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOm51bGwsInN1YiI6bnVsbCwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJpYXQiOjE1MzQ0MTEyOTYsImV4cCI6MTUzNDQ5OTQ5Niwicm9sZXMiOlsiYXV0aGVudGljYXRlZCIsImFkbWluaXN0cmF0b3IiXSwiZHJ1cGFsIjp7InVpZCI6Ijg4NzA0In19.fQlVYyjyuC-E1yraX2ohV2Q0FY8jAMGXeMy8O4l5ntI"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/productDetails?_format=json&nid=86095",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"productDetails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86095"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/producttails?_format=json&nid=86095",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"producttails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86095"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong nid",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/productDetails?_format=json&nid=86095abcd",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"productDetails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86095abcd"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Product Listing",
+							"item": [
+								{
+									"name": "Test with wrong token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOm51bGwsInN1YiI6bnVsbCwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJpYXQiOjE1MzQ0MTEyOTYsImV4cCI6MTUzNDQ5OTQ5Niwicm9sZXMiOlsiYXV0aGVudGljYXRlZCIsImFkbWluaXN0cmF0b3IiXSwiZHJ1cGFsIjp7InVpZCI6Ijg4NzA0In19.fQlVYyjyuC-E1yraX2ohV2Q0FY8jAMGXeMy8O4l5ntI"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/productListings?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"productListings"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/productLstings?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"productLstings"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with blank parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/productListings?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"productListings"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Product Featured",
+							"item": [
+								{
+									"name": "Test with wrong token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOm51bGwsInN1YiI6bnVsbCwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJpYXQiOjE1MzQ0MTEyOTYsImV4cCI6MTUzNDQ5OTQ5Niwicm9sZXMiOlsiYXV0aGVudGljYXRlZCIsImFkbWluaXN0cmF0b3IiXSwiZHJ1cGFsIjp7InVpZCI6Ijg4NzA0In19.fQlVYyjyuC-E1yraX2ohV2Q0FY8jAMGXeMy8O4l5ntI"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/browseProducts?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"browseProducts"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/browseoducts?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"browseoducts"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with blank parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/browseProducts",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"browseProducts"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Stories Listing",
+							"item": [
+								{
+									"name": "Test with wrong token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOm51bGwsInN1YiI6bnVsbCwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJpYXQiOjE1MzQ0MTEyOTYsImV4cCI6MTUzNDQ5OTQ5Niwicm9sZXMiOlsiYXV0aGVudGljYXRlZCIsImFkbWluaXN0cmF0b3IiXSwiZHJ1cGFsIjp7InVpZCI6Ijg4NzA0In19.fQlVYyjyuC-E1yraX2ohV2Q0FY8jAMGXeMy8O4l5ntI"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiesListing?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiesListing"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiListing?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiListing"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with blank parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiListing?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiListing"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Story Details",
+							"item": [
+								{
+									"name": "Test with wrong token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOm51bGwsInN1YiI6bnVsbCwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJpYXQiOjE1MzQ0MTEyOTYsImV4cCI6MTUzNDQ5OTQ5Niwicm9sZXMiOlsiYXV0aGVudGljYXRlZCIsImFkbWluaXN0cmF0b3IiXSwiZHJ1cGFsIjp7InVpZCI6Ijg4NzA0In19.fQlVYyjyuC-E1yraX2ohV2Q0FY8jAMGXeMy8O4l5ntI"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiesDetails?_format=json&nid=86068&nid=86075",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiesDetails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86068"
+												},
+												{
+													"key": "nid",
+													"value": "86075"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiestails?_format=json&nid=86068&nid=86075",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiestails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86068"
+												},
+												{
+													"key": "nid",
+													"value": "86075"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with  blank parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiestails?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiestails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												},
+												{
+													"key": "nid",
+													"value": "86068",
+													"disabled": true
+												},
+												{
+													"key": "nid",
+													"value": "86075",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Video Category",
+							"item": [
+								{
+									"name": "Test with wrong token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOm51bGwsInN1YiI6bnVsbCwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJpYXQiOjE1MzQ0MTEyOTYsImV4cCI6MTUzNDQ5OTQ5Niwicm9sZXMiOlsiYXV0aGVudGljYXRlZCIsImFkbWluaXN0cmF0b3IiXSwiZHJ1cGFsIjp7InVpZCI6Ijg4NzA0In19.fQlVYyjyuC-E1yraX2ohV2Q0FY8jAMGXeMy8O4l5ntI"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videoCategory?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videoCategory"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videotegory?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videotegory"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with blank parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videoCategory?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videoCategory"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Video Listing",
+							"item": [
+								{
+									"name": "Test with wrong token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOm51bGwsInN1YiI6bnVsbCwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJpYXQiOjE1MzQ0MTEyOTYsImV4cCI6MTUzNDQ5OTQ5Niwicm9sZXMiOlsiYXV0aGVudGljYXRlZCIsImFkbWluaXN0cmF0b3IiXSwiZHJ1cGFsIjp7InVpZCI6Ijg4NzA0In19.fQlVYyjyuC-E1yraX2ohV2Q0FY8jAMGXeMy8O4l5ntI"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videoListings?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videoListings"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videotings?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videotings"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with blank parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videoListings?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videoListings"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Video Details",
+							"item": [
+								{
+									"name": "Test with wrong token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOm51bGwsInN1YiI6bnVsbCwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJpYXQiOjE1MzQ0MTEyOTYsImV4cCI6MTUzNDQ5OTQ5Niwicm9sZXMiOlsiYXV0aGVudGljYXRlZCIsImFkbWluaXN0cmF0b3IiXSwiZHJ1cGFsIjp7InVpZCI6Ijg4NzA0In19.fQlVYyjyuC-E1yraX2ohV2Q0FY8jAMGXeMy8O4l5ntI"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videoDetails?_format=json&nid=86077abc",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videoDetails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86077abc"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videotails?_format=json&nid=86077abc",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videotails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86077abc"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test with blank parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/videoDetails?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"videoDetails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86077abc",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Sprint2",
+			"item": [
+				{
+					"name": "Positive Test Cases",
+					"item": [
+						{
+							"name": "Course Learning Levels Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/learningLevels?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"learningLevels"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "tid",
+											"value": "20130",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Course Module Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/levelInteractiveTermsContent?_format=json&tid=85845",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"levelInteractiveTermsContent"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "tid",
+											"value": "85845"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Story Home Page Featured Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/storiesTrendingSection?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"storiesTrendingSection"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Course module detail page",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/levelInteractiveContent?_format=json&nid=86539",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"levelInteractiveContent"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "nid",
+											"value": "86539"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Course home page featured listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"//below code is to assert the response code of api",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//verify the response time is acceptable",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/exploreLearningLevels?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"exploreLearningLevels"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "tid",
+											"value": "13504",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tool Details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/toolDetails?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"toolDetails"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FAQ Category",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/faqCategory?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"faqCategory"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FAQ Question Post",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "X-CSRF-Token",
+										"value": "gmSbrjOANbUJYFeBnHbRvnTbjLoPfJcrFxZmB5Kny44"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"question\":\"question for testing purpose only ?\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}api/v1/FaqQuestion?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"FaqQuestion"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FAQ Listing ",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/faqListings?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"faqListings"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lumen API for Level Filtering",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}lm/api/v1/getIntereactiveStatus?_format=json&tid=20130",
+									"host": [
+										"{{url}}lm"
+									],
+									"path": [
+										"api",
+										"v1",
+										"getIntereactiveStatus"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "tid",
+											"value": "20130"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Negative Test Cases",
+					"item": [
+						{
+							"name": "Course Learning Level Listing",
+							"item": [
+								{
+									"name": "wrong token ",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "flkslkflksjklfjklsjfkljsdlf34343434"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/learningLevels?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"learningLevels"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/learningLeve?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"learningLeve"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Blank Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/learningLevels?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"learningLevels"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Course Module Listing",
+							"item": [
+								{
+									"name": "Wrong Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "kjklfjksjkflksf342344343"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/levelInteractiveTermsContent?_format=json&tid=85803",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"levelInteractiveTermsContent"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "tid",
+													"value": "85803"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "invalid url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/levelInteractiveTermsConte?_format=json&tid=85803",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"levelInteractiveTermsConte"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "tid",
+													"value": "85803"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Blank Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/levelInteractiveTermsContent?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"levelInteractiveTermsContent"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												},
+												{
+													"key": "tid",
+													"value": "85803",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Story Home page featured listing",
+							"item": [
+								{
+									"name": "Wrong Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "kjfklsfksfjklsj122334343434"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiesTrendingSection?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiesTrendingSection"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "invalid url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiesTrendingSect?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiesTrendingSect"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Blank Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/storiesTrendingSection?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"storiesTrendingSection"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Course Module Detail Page",
+							"item": [
+								{
+									"name": "Wrong Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "kjksjfkskfjklsfkl34343455545"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/levelInteractiveContent?_format=json&nid=86113",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"levelInteractiveContent"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86113"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "invalid url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/levelInteractiveCont?_format=json&nid=86113",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"levelInteractiveCont"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86113"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Blank Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/levelInteractiveContent?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"levelInteractiveContent"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86113",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wrong parameter ",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/levelInteractiveContent?_format=json&nid=861137888",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"levelInteractiveContent"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "861137888"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Course Home page featured Listing",
+							"item": [
+								{
+									"name": "Wrong Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer kjdkljfsf43535454545456"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/exploreLearningLevels?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"exploreLearningLevels"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "invalid url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/exploreLearningLeve?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"exploreLearningLeve"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Blank Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/exploreLearningLevels?",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"exploreLearningLevels"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "wrong url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/exploreLearniLevels?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"exploreLearniLevels"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Sprint3",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "My Points",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}lm/api/v1/getUserPoints?_format=json&cuid=88723&token={{access_token}}",
+									"host": [
+										"{{url}}lm"
+									],
+									"path": [
+										"api",
+										"v1",
+										"getUserPoints"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "cuid",
+											"value": "88723"
+										},
+										{
+											"key": "token",
+											"value": "{{access_token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Profile Dashboard",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "uid",
+										"value": "88723",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/userDashboard?_format=json&uid=88723",
+									"protocol": "http",
+									"host": [
+										"bbux-cms-dev",
+										"eastus",
+										"cloudapp",
+										"azure",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"userDashboard"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "uid",
+											"value": "88723"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Instagram Hashtag Feed",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Spotlight",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/spotlightSection?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"spotlightSection"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "My points",
+							"item": [
+								{
+									"name": "Incorrect url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/getUsePoints?_format=json&cuid=88723&token={{access_token}}",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"getUsePoints"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "cuid",
+													"value": "88723"
+												},
+												{
+													"key": "token",
+													"value": "{{access_token}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "",
+												"disabled": true
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/getUserPoints?_format=json&cuid=88723&token={{access_token}}jhjhjj",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"getUserPoints"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "cuid",
+													"value": "88723"
+												},
+												{
+													"key": "token",
+													"value": "{{access_token}}jhjhjj"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "access api with post method",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/getUserPoints?_format=json&cuid=88723&token={{access_token}}",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"getUserPoints"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "cuid",
+													"value": "88723"
+												},
+												{
+													"key": "token",
+													"value": "{{access_token}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Encoding",
+												"value": "application/rss+xml"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/getUserPoints?format=json&cuid=88723jhjhjhjh&token={{access_token}}",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"getUserPoints"
+											],
+											"query": [
+												{
+													"key": "format",
+													"value": "json"
+												},
+												{
+													"key": "cuid",
+													"value": "88723jhjhjhjh"
+												},
+												{
+													"key": "token",
+													"value": "{{access_token}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "User Profile Dashboard",
+							"item": [
+								{
+									"name": "Incorrect URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/userDaoard?_format=json&uid=88723",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"userDaoard"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "uid",
+													"value": "88723"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}jhjyjuhjh"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/userDashboard?_format=json&uid=88723",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"userDashboard"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "uid",
+													"value": "88723"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/userDashboard?_format=json&uid=887238787",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"userDashboard"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "uid",
+													"value": "887238787"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Spot Light",
+							"item": [
+								{
+									"name": "Incorrect URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/spotlightction?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"spotlightction"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}jjhhujj"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/spotlightSection?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"spotlightSection"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/spotlightSection?format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"spotlightSection"
+											],
+											"query": [
+												{
+													"key": "format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Sprint4",
+			"item": [
+				{
+					"name": "Positive Scenarios",
+					"item": [
+						{
+							"name": "Event Details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/eventDetails?_format=json&nid=86477",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"eventDetails"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "nid",
+											"value": "86477"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Event Listing",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/eventListings?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"eventListings"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Privacy Policy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/privacyPolicy?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"privacyPolicy"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Terms & Conditions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/termsAndConditions?_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"termsAndConditions"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "My Bookmarks (Flags)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}lm/api/v1/myFlags?_format=json&flag_type=bookmarks&page=0",
+									"host": [
+										"{{url}}lm"
+									],
+									"path": [
+										"api",
+										"v1",
+										"myFlags"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "flag_type",
+											"value": "bookmarks"
+										},
+										{
+											"key": "page",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LeaderBoard",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}lm/api/v1/userLeaderBoard",
+									"host": [
+										"{{url}}lm"
+									],
+									"path": [
+										"api",
+										"v1",
+										"userLeaderBoard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonResponse = JSON.parse(responseBody);",
+											"var token = jsonResponse.jwt_access_token;",
+											"var logout = jsonResponse.logout_token;",
+											"",
+											"//below code will set the dynamically generated access token in the envrionment variable",
+											"postman.setEnvironmentVariable(\"access_token\", token);",
+											"postman.setEnvironmentVariable(\"logout_token\", logout);",
+											"",
+											"",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.current_user.uid).to.eql(\"88704\");",
+											"    pm.expect(jsonData.current_user.name).to.eql(\"ghanesh\");",
+											"    //below code is to assert the response code of api",
+											"});",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    ",
+											"});",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"ghanesh\", \n\t\"pass\":\"1234\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}user/login?_format=json",
+									"host": [
+										"{{url}}user"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Negative Scenarios",
+					"item": [
+						{
+							"name": "Terms & Conditions",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer jklgjdgjjdlkjdglj464646464646"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/termsAndConditions?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"termsAndConditions"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameters",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/ecmascript"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/termsAndConditions?format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"termsAndConditions"
+											],
+											"query": [
+												{
+													"key": "format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wrong URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/termsConditions?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"termsConditions"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Privacy Policy",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer kjlkjfksjlkfjskljlksjfg"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/privacyPolicy?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"privacyPolicy"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/privacyPolicy?format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"privacyPolicy"
+											],
+											"query": [
+												{
+													"key": "format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wrong URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/privaPolicy?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"privaPolicy"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Event Details",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer ljldjlgjdlkjgldjglkjdkljg"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/eventDetails?_format=json&nid=86495",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"eventDetails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86495"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/eventDetails?_format=json&nid=86495kjkljdfgkljg",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"eventDetails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86495kjkljdfgkljg"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wrong URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/evenetails?_format=json&nid=86495",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"evenetails"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "nid",
+													"value": "86495"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Event Listing",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer kjklsjfkljkjklslf"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/eventListings?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"eventListings"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/eventListings?format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"eventListings"
+											],
+											"query": [
+												{
+													"key": "format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wrong URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}api/v1/eventLtings?_format=json",
+											"host": [
+												"{{url}}api"
+											],
+											"path": [
+												"v1",
+												"eventLtings"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "My BookMark",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer kdfkkfkkfgkfgkkgkg"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/myFlags?_format=json&flag_type=bookmarks&page=0",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"myFlags"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "flag_type",
+													"value": "bookmarks"
+												},
+												{
+													"key": "page",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/myFlags?_format=json&flag_type=bookmarks23444&page=0",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"myFlags"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "flag_type",
+													"value": "bookmarks23444"
+												},
+												{
+													"key": "page",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/myFlgs?_format=json&flag_type=bookmarks&page=0",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"myFlgs"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "flag_type",
+													"value": "bookmarks"
+												},
+												{
+													"key": "page",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Leader Board",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer llmdlkgklglklgdg2233"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/userLeaderBoard",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"userLeaderBoard"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/userLeaderBoard?ormat=json",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"userLeaderBoard"
+											],
+											"query": [
+												{
+													"key": "ormat",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}lm/api/v1/userLeadrBoard",
+											"host": [
+												"{{url}}lm"
+											],
+											"path": [
+												"api",
+												"v1",
+												"userLeadrBoard"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Sprint 5",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Current User Language",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/currentLang?_format=json",
+									"protocol": "http",
+									"host": [
+										"bbux-cms-dev",
+										"eastus",
+										"cloudapp",
+										"azure",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"currentLang"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tools",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"NEED TO UPDATE this with the GUIDES"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}api/v1/toolsCategory_format=json",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"toolsCategory_format=json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Language List",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/languageList?_format=json",
+									"protocol": "http",
+									"host": [
+										"bbux-cms-dev",
+										"eastus",
+										"cloudapp",
+										"azure",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"languageList"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Language",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/updateLanguage?_format=json&languageCode=en",
+									"protocol": "http",
+									"host": [
+										"bbux-cms-dev",
+										"eastus",
+										"cloudapp",
+										"azure",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"updateLanguage"
+									],
+									"query": [
+										{
+											"key": "_format",
+											"value": "json"
+										},
+										{
+											"key": "languageCode",
+											"value": "en"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Static Translation Key",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Current User Language",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer jkhkkllkjkljklkkhky878878"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/currentLang?_format=json",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"currentLang"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/currentLang?format=json",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"currentLang"
+											],
+											"query": [
+												{
+													"key": "format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Url",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/currentLng?_format=json",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"currentLng"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Language List",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer jkldjfkjdjgkldjg545454545"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/languageList?_format=json",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"languageList"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/languageList?format=json",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"languageList"
+											],
+											"query": [
+												{
+													"key": "format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/langueList?_format=json",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"langueList"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Update Language",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer jlfjldjfjjlfj4545454545"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/updateLanguage?_format=json&languageCode=en",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"updateLanguage"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "languageCode",
+													"value": "en"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Parameter ",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/updateLanguage?_format=json&languageCode=enjkjgkdjkgd",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"updateLanguage"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "languageCode",
+													"value": "enjkjgkdjkgd"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid URL",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://bbux-cms-dev.eastus.cloudapp.azure.com/api/v1/updateLaguage?_format=json&languageCode=en",
+											"protocol": "http",
+											"host": [
+												"bbux-cms-dev",
+												"eastus",
+												"cloudapp",
+												"azure",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"updateLaguage"
+											],
+											"query": [
+												{
+													"key": "_format",
+													"value": "json"
+												},
+												{
+													"key": "languageCode",
+													"value": "en"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

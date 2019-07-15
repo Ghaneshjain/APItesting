@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="BBUX_PHASE_1" tests="117" time="60.265">
+  <testsuite name="Sprint1 / Positive Test Cases / Login API" id="e6dcc8e6-0b3a-4efc-b334-41b4f53d8a67" tests="2" failures="1" errors="0" time="1.186">
+    <testcase name="Your test name" time="1.186" classname="Sprint1 / Positive Test Cases / Login API">
+      <failure type="AssertionFailure">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 69ce77a8-306f-bd46-754a-28775e4c0565.]]>
+        <![CDATA[Collection name: BBUX_PHASE_1.]]>
+        <![CDATA[Request name: Sprint1 / Positive Test Cases / Login API.]]>
+        <![CDATA[Test description: Your test name.]]>
+        <![CDATA[Error message: expected '88720' to deeply equal '88704'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected '88720' to deeply equal '88704'
+   at Object.eval sandbox-script.js:1:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Status code is 200" time="1.186"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / Product Category" id="be7ff925-cd02-4ecd-9ec8-770def76e8b5" tests="3" failures="1" errors="0" time="0.949">
+    <testcase name="Status code is 200" time="0.949"/>
+    <testcase name="Response time is less than 2000ms" time="0.949"/>
+    <testcase name="Category name" time="0.949" classname="Sprint1 / Positive Test Cases / Product Category">
+      <failure type="AssertionFailure">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 69ce77a8-306f-bd46-754a-28775e4c0565.]]>
+        <![CDATA[Collection name: BBUX_PHASE_1.]]>
+        <![CDATA[Request name: Sprint1 / Positive Test Cases / Product Category.]]>
+        <![CDATA[Test description: Category name.]]>
+        <![CDATA[Error message: expected '85800' to deeply equal '258'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected '85800' to deeply equal '258'
+   at Object.eval sandbox-script.js:3:2).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / Product Detail" id="47d0d3d9-4405-4949-b64d-c882caefcb0c" tests="2" failures="0" errors="0" time="0.790">
+    <testcase name="Status code is 200" time="0.790"/>
+    <testcase name="Response time is less than 2000ms" time="0.790"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / Product Listing" id="a0dc61fe-bad9-4655-9a47-f5231711dc2c" tests="2" failures="0" errors="0" time="0.779">
+    <testcase name="Status code is 200" time="0.779"/>
+    <testcase name="Response time is less than 2000ms" time="0.779"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / Product Featured" id="58b9f2aa-7772-48f6-a006-f97628a64b56" tests="2" failures="0" errors="0" time="0.773">
+    <testcase name="Status code is 200" time="0.773"/>
+    <testcase name="Response time is less than 2000ms" time="0.773"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / StoriesListing" id="5fc43c4f-9937-43ba-8fc0-fa85713bf483" tests="2" failures="0" errors="0" time="0.728">
+    <testcase name="Status code is 200" time="0.728"/>
+    <testcase name="Response time is less than 2000ms" time="0.728"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / storiesDetails" id="54171cf4-ac81-4ec2-8692-dfd5a1c7566e" tests="2" failures="0" errors="0" time="1.081">
+    <testcase name="Status code is 200" time="1.081"/>
+    <testcase name="Response time is less than 2000ms" time="1.081"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / VideoCategory" id="ff5561ec-39d3-4974-b799-69ea7ddf64e6" tests="2" failures="0" errors="0" time="0.657">
+    <testcase name="Status code is 200" time="0.657"/>
+    <testcase name="Response time is less than 2000ms" time="0.657"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / videoListings" id="6633f611-c318-4578-ba40-cb12507f759e" tests="2" failures="0" errors="0" time="0.804">
+    <testcase name="Status code is 200" time="0.804"/>
+    <testcase name="Response time is less than 2000ms" time="0.804"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Positive Test Cases / videoDetails" id="6b40a0d5-a384-4d6e-8078-a2bc792e391b" tests="2" failures="0" errors="0" time="0.662">
+    <testcase name="Status code is 200" time="0.662"/>
+    <testcase name="Response time is less than 2000ms" time="0.662"/>
+  </testsuite>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Category / wrong token" id="3f272dff-7707-478e-b539-76ae6cc65b98" tests="2" failures="2" errors="0" time="0.365">
+    <testcase name="Status code is 401 and message is Unauthorized" time="0.365" classname="Sprint1 / Negative Test Cases / Product Category / wrong token">
+      <failure type="AssertionFailure">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 69ce77a8-306f-bd46-754a-28775e4c0565.]]>
+        <![CDATA[Collection name: BBUX_PHASE_1.]]>
+        <![CDATA[Request name: Sprint1 / Negative Test Cases / Product Category / wrong token.]]>
+        <![CDATA[Test description: Status code is 401 and message is Unauthorized.]]>
+        <![CDATA[Error message: expected response to have status code 401 but got 403.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 401 but got 403
+   at Object.eval sandbox-script.js:1:11).]]>
+      </failure>
+    </testcase>
+    <testcase name="Your test name" time="0.365" classname="Sprint1 / Negative Test Cases / Product Category / wrong token">
+      <failure type="AssertionFailure">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 69ce77a8-306f-bd46-754a-28775e4c0565.]]>
+        <![CDATA[Collection name: BBUX_PHASE_1.]]>
+        <![CDATA[Request name: Sprint1 / Negative Test Cases / Product Category / wrong token.]]>
+        <![CDATA[Test description: Your test name.]]>
+        <![CDATA[Error message: expected 'Internal Server Error' to deeply equal 'User is not authenticated'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 'Internal Server Error' to deeply equal 'User is not authenticated'
+   at Object.eval sandbox-script.js:2:11).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Category / Test with wrong url" id="d51b57ac-6084-4d0e-8380-9fcb7090b16c" tests="0" failures="0" errors="0" time="0.518"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Category / Test with blank parameter" id="93ffe48d-754b-44e2-890a-861ea0a01fe4" tests="0" failures="0" errors="0" time="0.636"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Detail / Test with Wrong Token" id="8cb74c55-4d22-4c0b-9ead-9e331ac72e99" tests="0" failures="0" errors="0" time="0.374"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Detail / Test with wrong url" id="a133c3e0-e355-453b-a94b-22a5769a949f" tests="0" failures="0" errors="0" time="0.483"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Detail / Test with wrong nid" id="648a2130-81de-4c94-be7f-f6f6e8d6c9e8" tests="0" failures="0" errors="0" time="0.421"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Listing / Test with wrong token" id="691896ad-a930-4611-82ea-d416e865d17d" tests="0" failures="0" errors="0" time="0.365"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Listing / Test with wrong url" id="fa718423-e76d-4558-b8a5-3ae26a65e2bb" tests="0" failures="0" errors="0" time="0.412"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Listing / Test with blank parameter" id="95a384f6-7fd0-494c-bd2c-267f6a82ac89" tests="0" failures="0" errors="0" time="0.761"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Featured / Test with wrong token" id="01ef28f8-b3a5-4801-8d68-76a421b69bbe" tests="0" failures="0" errors="0" time="0.387"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Featured / Test with wrong url" id="a15809fa-3da2-4542-8416-a1271e8aaeda" tests="0" failures="0" errors="0" time="0.411"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Product Featured / Test with blank parameter" id="799eed7f-a053-4b5a-b703-b147fb23c222" tests="0" failures="0" errors="0" time="0.694"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Stories Listing / Test with wrong token" id="b9a6a8a0-1c6f-463d-90b1-58fea8dfde26" tests="0" failures="0" errors="0" time="0.373"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Stories Listing / Test with wrong url" id="a98924cb-f239-4248-b388-11e470f8906b" tests="0" failures="0" errors="0" time="0.478"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Stories Listing / Test with blank parameter" id="95c178cc-034f-4485-aa70-efa881082013" tests="0" failures="0" errors="0" time="3.853"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Story Details / Test with wrong token" id="3e8af1dd-5fc4-4671-8a66-5fd25e9274f4" tests="0" failures="0" errors="0" time="0.425"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Story Details / Test with wrong url" id="b8c74249-2ea6-4679-b253-a5ca1ce48c3b" tests="0" failures="0" errors="0" time="0.419"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Story Details / Test with  blank parameter" id="91b47929-9f10-473a-ac7f-bd75ae1ad14d" tests="0" failures="0" errors="0" time="1.628"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Category / Test with wrong token" id="081d5eaa-5b1e-4fac-8c18-94e6c7af25e7" tests="0" failures="0" errors="0" time="0.359"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Category / Test with wrong url" id="b510df1a-683c-408b-9e85-cf778d0d8ead" tests="0" failures="0" errors="0" time="0.416"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Category / Test with blank parameter" id="54a4733a-bcb7-49c5-bb5e-cc2533da5753" tests="0" failures="0" errors="0" time="0.703"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Listing / Test with wrong token" id="973927af-a946-411f-9516-f1726d26e30c" tests="0" failures="0" errors="0" time="0.372"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Listing / Test with wrong url" id="6781892d-b35b-428b-b221-aca7fa563f5d" tests="0" failures="0" errors="0" time="0.410"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Listing / Test with blank parameter" id="2b7701e1-4229-4058-b9ed-1e6a74a6bb9d" tests="0" failures="0" errors="0" time="0.807"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Details / Test with wrong token" id="642412e0-ecf7-4d98-a1eb-a9a0ef66cfa4" tests="0" failures="0" errors="0" time="0.375"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Details / Test with wrong url" id="e9ed12f7-0240-4bce-aaae-4f04d1d64088" tests="0" failures="0" errors="0" time="0.423"/>
+  <testsuite name="Sprint1 / Negative Test Cases / Video Details / Test with blank parameter" id="6d8bb6dc-464b-4e08-8bb1-82edae79e5fd" tests="0" failures="0" errors="0" time="0.497"/>
+  <testsuite name="Sprint2 / Positive Test Cases / Course Learning Levels Listing" id="d007d12a-2be7-408f-ac20-78199423f813" tests="2" failures="0" errors="0" time="0.806">
+    <testcase name="Status code is 200" time="0.806"/>
+    <testcase name="Response time is less than 2000ms" time="0.806"/>
+  </testsuite>
+  <testsuite name="Sprint2 / Positive Test Cases / Course Module Listing" id="7f0acf99-edaf-4dbd-8caf-2404ced03995" tests="2" failures="0" errors="0" time="0.796">
+    <testcase name="Status code is 200" time="0.796"/>
+    <testcase name="Response time is less than 2000ms" time="0.796"/>
+  </testsuite>
+  <testsuite name="Sprint2 / Positive Test Cases / Story Home Page Featured Listing" id="fb38f9a9-ef9a-419d-9c9a-2f9fc34f5246" tests="2" failures="0" errors="0" time="0.688">
+    <testcase name="Status code is 200" time="0.688"/>
+    <testcase name="Response time is less than 2000ms" time="0.688"/>
+  </testsuite>
+  <testsuite name="Sprint2 / Positive Test Cases / Course module detail page" id="55998d9c-66a7-459a-803a-6e717c3e76e8" tests="2" failures="0" errors="0" time="0.692">
+    <testcase name="Status code is 200" time="0.692"/>
+    <testcase name="Response time is less than 2000ms" time="0.692"/>
+  </testsuite>
+  <testsuite name="Sprint2 / Positive Test Cases / Course home page featured listing" id="9fa8b01c-7ad8-4e4e-bca1-b77426525c60" tests="2" failures="0" errors="0" time="0.888">
+    <testcase name="Status code is 200" time="0.888"/>
+    <testcase name="Response time is less than 2000ms" time="0.888"/>
+  </testsuite>
+  <testsuite name="Sprint2 / Positive Test Cases / Tool Details" id="e3d59a8c-e9a1-4992-9b42-fdd8697a6f95" tests="0" failures="0" errors="0" time="0.692"/>
+  <testsuite name="Sprint2 / Positive Test Cases / FAQ Category" id="f0cc9f92-47da-4ec0-b86c-fea77ed409fa" tests="0" failures="0" errors="0" time="0.706"/>
+  <testsuite name="Sprint2 / Positive Test Cases / FAQ Question Post" id="13ffdc7c-b4ca-4a9f-a2cc-8d71973a680f" tests="0" failures="0" errors="0" time="0.415"/>
+  <testsuite name="Sprint2 / Positive Test Cases / FAQ Listing " id="25609b7e-f7b5-49c8-ab39-dc5694a9bbc1" tests="0" failures="0" errors="0" time="0.794"/>
+  <testsuite name="Sprint2 / Positive Test Cases / Lumen API for Level Filtering" id="08c2a1b3-2595-4725-9a6a-7bb64197cb3e" tests="0" failures="0" errors="0" time="0.317"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Learning Level Listing / wrong token " id="bfaaada6-971c-4724-aa0e-40dfd9b6b838" tests="0" failures="0" errors="0" time="0.461"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Learning Level Listing / Invalid url" id="ec68f953-745e-482e-b4d1-28f9851a57e7" tests="0" failures="0" errors="0" time="0.519"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Learning Level Listing / Blank Parameter" id="51aeb059-6e82-4c2a-951b-062f6c50f623" tests="0" failures="0" errors="0" time="0.912"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Module Listing / Wrong Token" id="a396f7c3-d2a1-4065-9280-fb1cc6f04495" tests="0" failures="0" errors="0" time="0.383"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Module Listing / invalid url" id="6105a428-a781-409e-a5e9-2881230692e0" tests="0" failures="0" errors="0" time="0.399"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Module Listing / Blank Parameter" id="bf1ecab4-3cd6-48e8-aebd-196e09088f68" tests="0" failures="0" errors="0" time="0.409"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Story Home page featured listing / Wrong Token" id="dd72c663-9204-4c50-b3c0-46e3b441ab53" tests="0" failures="0" errors="0" time="0.383"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Story Home page featured listing / invalid url" id="fcc529eb-cc75-4523-9d95-5008956384ee" tests="0" failures="0" errors="0" time="0.399"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Story Home page featured listing / Blank Parameter" id="ef82e520-15cf-4e3c-93f3-dfba6591fc6c" tests="0" failures="0" errors="0" time="0.731"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Module Detail Page / Wrong Token" id="4fd3c36f-0ae1-4d3f-804b-ddc29e1036bf" tests="0" failures="0" errors="0" time="0.386"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Module Detail Page / invalid url" id="a1159a21-8efb-49be-84c7-9abbab9362d1" tests="0" failures="0" errors="0" time="0.396"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Module Detail Page / Blank Parameter" id="c1ce82a2-a5f3-4707-b129-31a74a750d43" tests="0" failures="0" errors="0" time="0.407"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Module Detail Page / Wrong parameter " id="876f5eb3-d7d4-48b5-9f3b-d9b4241f0d03" tests="0" failures="0" errors="0" time="0.427"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Home page featured Listing / Wrong Token" id="338e1c65-eaed-41af-a1aa-20718bfdaaf8" tests="0" failures="0" errors="0" time="0.370"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Home page featured Listing / invalid url" id="df61c40b-ce4f-4e7c-93d5-b9e596369da8" tests="0" failures="0" errors="0" time="0.398"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Home page featured Listing / Blank Parameter" id="95da6a81-db5f-47f7-b3a5-9915f1a8ad17" tests="0" failures="0" errors="0" time="0.807"/>
+  <testsuite name="Sprint2 / Negative Test Cases / Course Home page featured Listing / wrong url" id="9960fcc9-fdc9-4952-932d-beab70781848" tests="0" failures="0" errors="0" time="0.405"/>
+  <testsuite name="Sprint3 / Positive / My Points" id="3fdf4893-742b-4dc3-8177-fe607ec0d949" tests="0" failures="0" errors="0" time="0.304"/>
+  <testsuite name="Sprint3 / Positive / User Profile Dashboard" id="5bfb9530-ae37-4ff4-bf26-de3a2291d079" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint3 / Positive / Instagram Hashtag Feed" id="b8e5191c-1a43-473a-a069-7577d47e36f3" tests="0" failures="0" errors="0" time="1.768"/>
+  <testsuite name="Sprint3 / Positive / Spotlight" id="594d1ce1-b04e-40d5-a8fa-2c6938c6b5ba" tests="0" failures="0" errors="0" time="0.749"/>
+  <testsuite name="Sprint3 / Negative / My points / Incorrect url" id="5ceecaee-58f1-491e-8672-f9a99e7f5b3b" tests="0" failures="0" errors="0" time="0.285"/>
+  <testsuite name="Sprint3 / Negative / My points / Invalid Token" id="120927a7-5476-4e3d-b7cc-1d374820cac0" tests="0" failures="0" errors="0" time="0.250"/>
+  <testsuite name="Sprint3 / Negative / My points / access api with post method" id="26518196-2ab7-43d2-b802-7a18a7703668" tests="0" failures="0" errors="0" time="0.252"/>
+  <testsuite name="Sprint3 / Negative / My points / Invalid Parameter" id="bd5fb4c8-c37b-49a9-b9f2-8d378874b1ac" tests="0" failures="0" errors="0" time="0.281"/>
+  <testsuite name="Sprint3 / Negative / User Profile Dashboard / Incorrect URL" id="012a4d62-ff41-4cfd-aea6-721784559654" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint3 / Negative / User Profile Dashboard / Invalid Token" id="ce7bce50-ad17-4720-ae95-74ea83182bd6" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint3 / Negative / User Profile Dashboard / Invalid Parameter" id="68a34031-e7d0-470a-80a5-934b2e7c7304" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint3 / Negative / Spot Light / Incorrect URL" id="39cf6b5d-1993-4888-9de2-1c0691aec895" tests="0" failures="0" errors="0" time="0.468"/>
+  <testsuite name="Sprint3 / Negative / Spot Light / Invalid Token" id="9f8156a4-ce3e-46cf-a8ca-882f5be65952" tests="0" failures="0" errors="0" time="0.382"/>
+  <testsuite name="Sprint3 / Negative / Spot Light / Invalid Parameter" id="ae5ea9b4-05ac-4a59-972c-10f828d97707" tests="0" failures="0" errors="0" time="0.723"/>
+  <testsuite name="Sprint4 / Positive Scenarios / Event Details" id="0395e5fd-4526-4061-8ba8-d78c134571e7" tests="0" failures="0" errors="0" time="1.116"/>
+  <testsuite name="Sprint4 / Positive Scenarios / Event Listing" id="9982eb63-55cb-4b77-b71a-bae14cd0c7a0" tests="0" failures="0" errors="0" time="0.706"/>
+  <testsuite name="Sprint4 / Positive Scenarios / Privacy Policy" id="f19fb574-bbb0-4af3-801a-36b526abae05" tests="0" failures="0" errors="0" time="1.107"/>
+  <testsuite name="Sprint4 / Positive Scenarios / Terms &amp; Conditions" id="e6d1649e-3cd7-4f0c-8627-5868db369ee8" tests="0" failures="0" errors="0" time="1.331"/>
+  <testsuite name="Sprint4 / Positive Scenarios / My Bookmarks (Flags)" id="d3e8e0e4-4690-4f3d-b5d8-eb7138160330" tests="0" failures="0" errors="0" time="0.708"/>
+  <testsuite name="Sprint4 / Positive Scenarios / LeaderBoard" id="ac980da1-b531-4b2f-8f68-49470dfa0550" tests="0" failures="0" errors="0" time="0.601"/>
+  <testsuite name="Sprint4 / Positive Scenarios / Login API" id="8391dbb7-62d4-4858-a5c3-947364863b5d" tests="2" failures="2" errors="0" time="0.384">
+    <testcase name="Your test name" time="0.384" classname="Sprint4 / Positive Scenarios / Login API">
+      <failure type="AssertionFailure">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 69ce77a8-306f-bd46-754a-28775e4c0565.]]>
+        <![CDATA[Collection name: BBUX_PHASE_1.]]>
+        <![CDATA[Request name: Sprint4 / Positive Scenarios / Login API.]]>
+        <![CDATA[Test description: Your test name.]]>
+        <![CDATA[Error message: Cannot read property 'uid' of undefined.]]>
+        <![CDATA[Stacktrace: TypeError: Cannot read property 'uid' of undefined
+   at Object.eval sandbox-script.js:1:85).]]>
+      </failure>
+    </testcase>
+    <testcase name="Status code is 200" time="0.384" classname="Sprint4 / Positive Scenarios / Login API">
+      <failure type="AssertionFailure">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 69ce77a8-306f-bd46-754a-28775e4c0565.]]>
+        <![CDATA[Collection name: BBUX_PHASE_1.]]>
+        <![CDATA[Request name: Sprint4 / Positive Scenarios / Login API.]]>
+        <![CDATA[Test description: Status code is 200.]]>
+        <![CDATA[Error message: expected response to have status code 200 but got 403.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 200 but got 403
+   at Object.eval sandbox-script.js:2:85).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Sprint4 / Negative Scenarios / Terms &amp; Conditions / Invalid Token" id="3e4a3fe7-d392-433f-a115-30cde9e45afd" tests="0" failures="0" errors="0" time="0.367"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Terms &amp; Conditions / Invalid Parameters" id="df95b11e-60f5-48c4-89fc-dbec06df4e53" tests="0" failures="0" errors="0" time="0.382"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Terms &amp; Conditions / Wrong URL" id="a5e1e592-ee50-4583-bb5f-518b5080b78a" tests="0" failures="0" errors="0" time="0.393"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Privacy Policy / Invalid Token" id="c9e403a7-796d-48f9-b778-8fcb9b2455d1" tests="0" failures="0" errors="0" time="0.376"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Privacy Policy / Invalid Parameter" id="e3a4f040-71b5-465f-87f1-d9b16cc2a005" tests="0" failures="0" errors="0" time="0.383"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Privacy Policy / Wrong URL" id="64059e3f-226f-4e79-b271-ed808fa5c026" tests="0" failures="0" errors="0" time="0.391"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Event Details / Invalid Token" id="f4a1779b-44bb-49ad-84c8-5f302c149b12" tests="0" failures="0" errors="0" time="0.400"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Event Details / Invalid Parameter" id="91434281-6839-49ab-8001-c9efcaf08b52" tests="0" failures="0" errors="0" time="0.383"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Event Details / Wrong URL" id="5bdc02a0-e6c2-4eaf-ac16-d3656a28706a" tests="0" failures="0" errors="0" time="0.375"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Event Listing / Invalid Token" id="28688692-8781-4cfc-bc0d-2db5245e1a28" tests="0" failures="0" errors="0" time="0.360"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Event Listing / Invalid Parameter" id="bae7c1af-3ba6-47b0-8ed7-fc6a8fa34ca9" tests="0" failures="0" errors="0" time="0.482"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Event Listing / Wrong URL" id="1bc55533-56a1-4feb-ba72-bca6480c32ed" tests="0" failures="0" errors="0" time="0.605"/>
+  <testsuite name="Sprint4 / Negative Scenarios / My BookMark / Invalid Token" id="c662d9a5-4546-4036-8b0a-f9984b31cba6" tests="0" failures="0" errors="0" time="0.296"/>
+  <testsuite name="Sprint4 / Negative Scenarios / My BookMark / Invalid Parameter" id="8f91c602-3a7f-42cf-a91c-a6a3f81a0a2b" tests="0" failures="0" errors="0" time="0.296"/>
+  <testsuite name="Sprint4 / Negative Scenarios / My BookMark / Invalid URL" id="fff8d6cb-61c0-40c7-962b-316f352790d6" tests="0" failures="0" errors="0" time="0.250"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Leader Board / Invalid Token" id="f9874afa-284a-4e34-8742-8e7b89c57bf7" tests="0" failures="0" errors="0" time="0.262"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Leader Board / Invalid Parameter" id="cd78ee0a-ea0c-42d8-b5ec-12e793cadda6" tests="0" failures="0" errors="0" time="0.275"/>
+  <testsuite name="Sprint4 / Negative Scenarios / Leader Board / Invalid URL" id="391c2b27-7087-4485-bd28-5c75491b5d1f" tests="0" failures="0" errors="0" time="0.297"/>
+  <testsuite name="Sprint 5 / Positive / Current User Language" id="8b35a5b3-f59d-4b16-a2ca-b6a4c04e6be9" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Positive / Tools" id="48cd0204-f0a8-4a42-8a23-54c75e6854d6" tests="0" failures="0" errors="1" time="1.517">
+    <error>
+      <![CDATA[Iteration: 0
+
+---
+prerequestScriptError: Unexpected identifier
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Positive / Language List" id="a491a28d-d28e-4a43-ba73-c5396dd78aaa" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Positive / Update Language" id="c458df71-7d85-475a-807e-1ef9ddeebb76" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Positive / Static Translation Key" id="e3f8cbee-bd7f-4208-a082-42f445b7b80e" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: runtime:extenstions~request: request url is empty
+    at Requester.request (/usr/local/lib/node_modules/newman/node_modules/postman-runtime/lib/requester/requester.js:115:29)
+    at /usr/local/lib/node_modules/newman/node_modules/postman-runtime/lib/runner/extensions/http-request.command.js:116:37
+    at Function.create (/usr/local/lib/node_modules/newman/node_modules/postman-runtime/lib/requester/requester.js:211:16)
+    at RequesterPool.create (/usr/local/lib/node_modules/newman/node_modules/postman-runtime/lib/requester/requester-pool.js:27:22)
+    at /usr/local/lib/node_modules/newman/node_modules/postman-runtime/lib/runner/extensions/http-request.command.js:105:32
+    at /usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:1140:9
+    at /usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:473:16
+    at replenish (/usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:1006:25)
+    at /usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:1016:9
+    at _asyncMap (/usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:1133:5)
+    at /usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:1219:16
+    at /usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:1046:16
+    at Object.<anonymous> (/usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:240:20)
+    at Object.<anonymous> (/usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:74:12)
+    at Object.applyEachSeries (/usr/local/lib/node_modules/newman/node_modules/async/dist/async.js:245:23)
+    at PostmanCollectionRun.httprequest (/usr/local/lib/node_modules/newman/node_modules/postman-runtime/lib/runner/extensions/http-request.command.js:57:19)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Current User Language / Invalid Token" id="f32275c3-bced-4654-8b8f-4be3f9b80c4b" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Current User Language / Invalid Parameter" id="299adf6c-a4da-4d0d-acff-9234f80daf01" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Current User Language / Invalid Url" id="e48e58ca-6a1f-4e9f-9f08-bbf5fbcdbd38" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Language List / Invalid Token" id="d02500db-2e76-4ffa-b265-2f3ac402d28d" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Language List / Invalid Parameter" id="43cfbe97-b6e6-43ce-bddd-a88bd94b3640" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Language List / Invalid URL" id="538937ab-bce1-4b5e-8d5b-d6a0119b8605" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Update Language / Invalid Token" id="db32ab59-c5da-4815-96e4-7e0962d4c106" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Update Language / Invalid Parameter " id="2f3e51d5-37c2-40be-b7d6-b57a80d900df" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+  <testsuite name="Sprint 5 / Negative / Update Language / Invalid URL" id="90dd5b54-afd2-4838-a13e-dc5cfc7c8c0e" tests="0" failures="0" errors="1" time="0.000">
+    <error>
+      <![CDATA[Iteration: 0
+RequestError: Error: getaddrinfo ENOTFOUND bbux-cms-dev.eastus.cloudapp.azure.com bbux-cms-dev.eastus.cloudapp.azure.com:80
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+
+---
+]]>
+    </error>
+  </testsuite>
+</testsuites>
