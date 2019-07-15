@@ -1,0 +1,123 @@
+{
+  "id": "8b105b4f-1402-4b52-81ce-aca1f4f9d53d",
+  "name": "TFX 3.0 Prod",
+  "values": [
+    {
+      "key": "env_baseURL",
+      "value": "https://cms.tomfordbeautyeducation.com",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "username",
+      "value": "ghanesh.jain@srijan.net",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "password",
+      "value": "1234",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_statusOK",
+      "value": "() => {\n    pm.test(\"Status code should be 200 and message should be OK\", function () {\n    pm.response.to.have.status(200);\n    pm.response.to.have.status(\"OK\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_responseTime",
+      "value": " () => {\n    pm.test(\"Response time is less than 1000ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(1000);\n    });\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_ methodNotFound_405",
+      "value": "() => {\n    pm.test(\"Status code should be 405 and message should be Method Not Allowed\", function () {\n    pm.response.to.have.status(405);\n    pm.response.to.have.status(\"Method Not Allowed\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_Forbidden_403",
+      "value": "() => {\n    pm.test(\"Status code should be 403 and message should be Forbidden\", function () {\n    pm.response.to.have.status(403);\n    pm.response.to.have.status(\"Forbidden\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_badRequest_400",
+      "value": "() => {\n    pm.test(\"Status code should be 400 and message should be Bad Request\", function () {\n    pm.response.to.have.status(400);\n    pm.response.to.have.status(\"Bad Request\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_notAcceptable_406",
+      "value": "() => {\n    pm.test(\"Status code should be 406 and message should be Not Acceptable\", function () {\n    pm.response.to.have.status(406);\n    pm.response.to.have.status(\"Not Acceptable\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_notFound_404",
+      "value": "() => {\n    pm.test(\"Status code should be 404 and message should be Not Found\", function () {\n    pm.response.to.have.status(404);\n    pm.response.to.have.status(\"Not Found\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_unauthorized_401",
+      "value": "() => {\n    pm.test(\"Status code should be 401 and message should be Unauthorized\", function () {\n    pm.response.to.have.status(401);\n    pm.response.to.have.status(\"Unauthorized\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_created",
+      "value": "() => {\n    pm.test(\"Status code should be 201 and message should be Created\", function () \n    { \n        pm.response.to.have.status(201);\n        pm.response.to.have.status(\"Created\");\n    });\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "learningLevel_nid",
+      "value": 85882,
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_noContent_204",
+      "value": "() => {\n    pm.test(\"Status code should be 204 and message should be No Content\", function () {\n    pm.response.to.have.status(204);\n    pm.response.to.have.status(\"No Content\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "env_415_Unsupported_Media_Type",
+      "value": "() => {\n    pm.test(\"Status code should be 415 and message should be 415 Unsupported Media Type\", function () {\n    pm.response.to.have.status(415);\n    pm.response.to.have.status(\"Unsupported Media Type\");\n});\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "client_secret",
+      "value": "Zaq1!Xsw2@",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "client_id",
+      "value": "889f4230-48c4-4244-97cb-c5bda31d5e4f",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "Token",
+      "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjZhYTI0ODJjMWZmYmJkNzNiYTYwNDU2MDA3MmU0NzUxODgwZDIwMDkyYzI2NzkyMzNmMTM4YjNhOTViZmYyZDFmNTNhZjJhNjFlMzk3OTc2In0.eyJhdWQiOiI4ODlmNDIzMC00OGM0LTQyNDQtOTdjYi1jNWJkYTMxZDVlNGYiLCJqdGkiOiI2YWEyNDgyYzFmZmJiZDczYmE2MDQ1NjAwNzJlNDc1MTg4MGQyMDA5MmMyNjc5MjMzZjEzOGIzYTk1YmZmMmQxZjUzYWYyYTYxZTM5Nzk3NiIsImlhdCI6MTU2MTExODk0NiwibmJmIjoxNTYxMTE4OTQ2LCJleHAiOjE1NjExNjIxNDYsInN1YiI6IjkzMjEwIiwic2NvcGVzIjpbImF1dGhlbnRpY2F0ZWQiXX0.pmvcXTa99ZSW347b-Iq1LMOZijulkvmvhuMZAanWb5Sq51k-RTtyU_Gw9kE1kMrZBRVR1-HZ3ACny6T4uE_AV-So7MKs1R343F8O28j9uyKruwCdk7gh6HZasu3aUGzmKxqhi2EC4vstbhJi56EmVOBBXi-QK01nOslJzjJiPUfrIK7pqudeyzTi3BaeyVgjgq865I_BGc9PkQ29ig8bANBrXeGiq-Z8bZCEBIJ_orQQJcXx1cOFv2O4etR9uUcKbiTRWp65tjsOSCCJ_1VdjO3LyJyk_h7y5mQ57V9ytDxqelSdC2jQTzoeV5vF_ZG5Y6NMv5Df9rrwvp5KjxhWKA",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "refresh_token",
+      "value": "def5020070a6a13b21836148965c18093423349899ab2d92d5c6b66e1ffa8dc6c9dcdc3f9964c22db7a26c890ee06b2f1cd2e13890f36156abba57c372c02f65db2529f5d4dff609bca8c757d4e797b1dcfdbe220aa66effa0eb6dff09915b417469463547544d564b4dfd1d9c5631bc550a677082b552a6215f8c8a6dca4a0a4f6132c495db03fd033a295cb5df00e4d991efba3fe3898d757791a488a8552ca0b40c3f430f29aa3386cf9d5a841b9ebaef50c591260dadac2d43b00a6e2df0591e9f819929b59f9a73e7bd4c321e39859d440f5389149dfeb97359e7281495875f312f1b341808cae6f0266679a370ad621fdb06a9fa15e686b712fee2199e0cee6fdaf3d30f3142affcd02e0e0e69186694c1a6d8c1bfb9139feecac2bf756a44601a5427c114d9577a51d4a733b842bb5678ba26e23d20a5949e7e673532a1908af162b040c6f944f3c24f79c5b8b91874d8b54bde989f4d22665bf983e2d91ac4595b065a184185ede65fbf70e64aa1f604b791f89a8537503c4e4aa93e7fcfc2de833dd7c6dda0713f8f12af199d8433be8fe162e857",
+      "enabled": true,
+      "type": "text"
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2019-06-21T12:17:36.556Z",
+  "_postman_exported_using": "Postman/6.1.4"
+}
